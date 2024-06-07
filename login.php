@@ -1,3 +1,33 @@
+<?php
+    session_start();
+    if(isset($_SESSION['userid']))
+        header('Location: index.php');
+
+    require "../connectdb.php";
+    mysqli_select_db($db, 'fleamarket') or die(mysqli_error($db));
+
+    if(isset($_POST['userid'])){
+    $userid = $_POST['userid'];
+    $userpass = $_POST['userpass'];
+
+    $query = "select * from users where userid='$userid'";
+    $result = mysqli_query($db, $query) or die(mysqli_error($db));
+    $result = mysqli_fetch_assoc($result);
+
+    if(isset($result['userID'])){
+        // echo $result['userName'];
+        $auth = password_verify($userpass,$result['userPasshash']);
+    }else{
+        $auth = 0;
+        // echo 'no id';
+    }
+    if($auth){
+        $_SESSION['userid'] = $result['userID'];
+        $_SESSION['username'] = $result['userName'];
+        header('Location: index.php');
+    }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,27 +40,24 @@
     <header>
         <?php require "module/header.php";?>
     </header>
-    <div class="search">
-        <form action="" method="post">
-            <select name="category" id="category">
-                <option value="books">Books</option>
-                <option value="furnitures">Furnitures</option>
-                <option value="electronics">Electronics</option>
-                <option value="etc">Etc.</option>
-            </select>
-            <input type="search" name="keyword" id="squery">
-        </form>
-    </div>
     <div class="main-wrap">
-        <section>
-            <article class="item-wrap" >
-                <a class="item-link" href="/view?id=0001">
-                    <img src="" alt="">
-                    <p class="item-title">팔아요</p>
-                    <p class="item-price">100원</p>
-                    <p class="item-desc"></p>
-                </a>
-            </article>
+        <section class="login post">
+            <h2>Login</h2>
+            <form action="" method="post">
+                <p>
+                    <label for="userid">ID</label>
+                    <input type="text" name="userid" id="userid" required>
+                </p>
+                <p>
+                    <label for="userpass">Password</label>
+                    <input type="password" name="userpass" id="userpass" required>
+                </p>
+                <?php if(isset($auth)&&!$auth)
+                echo "<p class='error calign'>Wrong ID or Password</p>"; ?>
+                <p class="calign">
+                    <input type="submit" id="submit" value="Login" class="btn">
+                </p>
+            </form>
         </section>
     </div>
 </body>

@@ -1,3 +1,13 @@
+<?php
+    session_start();
+    include "../connectdb.php";
+    if(isset($_GET['logout'])){
+        unset($_SESSION['userid']);
+        unset($_SESSION['username']);
+        header('Location: index.php');
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,19 +20,14 @@
     <header>
         <?php require "module/header.php";?>
     </header>
-    <div class="search">
-        <form action="" method="post">
-            <select name="category" id="category">
-                <option value="books">Books</option>
-                <option value="furnitures">Furnitures</option>
-                <option value="electronics">Electronics</option>
-                <option value="etc">Etc.</option>
-            </select>
-            <input type="search" name="keyword" id="squery">
-        </form>
-    </div>
+    <?php require "module/search.php";?>
     <div class="main-wrap">
-        <section>
+        <section class="articles-wrap">
+            <?php
+                foreach ($_POST as $key => $value) {
+                    echo "<div>$key => $value</div>";
+                }
+            ?>
             <article class="item-wrap" >
                 <a class="item-link" href="/view.php?id=0001">
                     <img src="" alt="">
