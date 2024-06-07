@@ -4,7 +4,8 @@
     list-style: none;
 }
 body{
-    font-family: Arial, Helvetica, sans-serif
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: aliceblue;
 }
 a{
     color : black;
@@ -18,18 +19,18 @@ a{
     text-align: center;
     width: 100px;
     padding: 7px 0;
-    margin: 2px;
+    margin: 0 2px;
     border-radius: 7px;
     background-color: dodgerblue;
+    font-size: small;
     font-weight: bold;
-    border: solid black;
+    border: solid;
 }
 header{
     display: flex;
     justify-content: space-between;
     align-items: center;
     /* border-bottom: solid black 1px; */
-    background-color: white;
 }
 .menu{
     display: flex;
