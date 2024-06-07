@@ -11,26 +11,29 @@ a{
     text-decoration: none;
 }
 
-.logo {
-
+#logo {
+    padding: 15px;
 }
 .btn {
     text-align: center;
     width: 100px;
     padding: 7px 0;
     margin: 2px;
-    background-color: white;
+    border-radius: 7px;
+    background-color: dodgerblue;
     font-weight: bold;
-    border: solid;
+    border: solid black;
 }
 header{
     display: flex;
-    justify-content: right;
-    border-bottom: solid black 1px;
+    justify-content: space-between;
+    align-items: center;
+    /* border-bottom: solid black 1px; */
+    background-color: white;
 }
 .menu{
     display: flex;
-    padding: 5px 10px;
+    padding: 5px 15px;
 }
 
 .search, .main-wrap{
