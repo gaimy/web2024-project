@@ -6,6 +6,7 @@
     require "../connectdb.php";
     mysqli_select_db($db, 'fleamarket') or die(mysqli_error($db));
 
+    // WARNING : SQL injection weak - need escape
     if(isset($_POST['userid'])){
     $userid = $_POST['userid'];
     $userpass = $_POST['userpass'];
@@ -15,11 +16,9 @@
     $result = mysqli_fetch_assoc($result);
 
     if(isset($result['userID'])){
-        // echo $result['userName'];
         $auth = password_verify($userpass,$result['userPasshash']);
     }else{
-        $auth = 0;
-        // echo 'no id';
+        $auth = 0; // no id;
     }
     if($auth){
         $_SESSION['userid'] = $result['userID'];

@@ -13,13 +13,14 @@ a{
     color : black;
     text-decoration: none;
 }
-select, input{
+select, input, textarea{
     font-size: 16px;
     padding: 5px;
     border-width: 0 0 1px 0;
     border-radius: 3px;
     border-bottom-color: blue;
 }
+
 
 /* header part */
 #logo {
@@ -34,6 +35,7 @@ select, input{
     font-weight: bold;
 }
 .btn {
+    display: block;
     text-align: center;
     width: 90px;
     padding: 10px 0;
@@ -64,7 +66,7 @@ header{
     margin-top: 10px;
 }
 .search form{
-    flex: 0 0 50%;
+    flex: 0 0 60%;
     display: flex
 }
 .search select{
@@ -75,22 +77,136 @@ header{
     flex: 0 1 80%;
 }
 
+/* index page */
+.articles-wrap{
+    flex-basis: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 30px 0;
+}
+.item-wrap{
+    flex: 0 1 200px;
+    padding: 15px;
+    margin: 5px;
+    background-color: white;
+    border-radius: 5%;
+}
+.item-imgwrap{
+    display: flex;
+    justify-content: center;
+}
+.item-wrap img{
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+}
+.item-link{
+    display: block flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+.item-title{
+    margin: 10px 2px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.item-desc{
+    font-family: Cambria;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+.item-author, .item-date{
+    font-family: monospace;
+    font-weight: bold;
+    text-align: right;
+    margin-right: 10px;
+}
+.item-author::before{
+    content: "Uploaded by ";
+    font-weight: normal;
+}
+@media (max-width:899px){
+    .articles-wrap{
+        flex-basis: 90%;
+        display: flex;
+        flex-direction: column;
+        padding: 15px 0;
+    }
+    .item-wrap{
+        flex: 0 1 120px;
+        padding: 15px;
+        margin: 5px;
+        background-color: white;
+        border-radius: 5%;
+    }
+    .item-link{
+        display: block flex;
+        flex-direction: row;
+        justify-content: left;
+    }
+    .item-wrap img{
+        object-fit: cover;
+        width: 120px;
+        height: 120px;
+    }
+    .item-content{
+        margin: 0 20px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+}
 
 
-/* main content */
+/* Article view */
+.articleview{
+    flex: 0 0 70%;
+    padding: 20px;
+    background-color: white;
+}
+.articleview .item-imgwrap img{
+    max-width: 100%;
+    max-height: 350px;
+}
+.item-category{
+    margin: 5px 10px;
+    font-size: 14px;
+}
+.articleview .item-desc{
+    margin: 10px;
+    font-size: 18px;
+}
+.articleview .item-title{
+    margin: 30px 0 10px 10px;
+    font-size: 24px;
+}
+.articleview .item-author,.articleview .item-date{
+    text-align: left;
+}
+footer{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.btn[href$='remove']{
+    background-color: orangered;
+}
+.btn[href$='unmark']{
+    background-color: lightsalmon;
+}
+
+/* Form design */
 .error{
     color:red;
     font-weight: bold;
 }
-.articles-wrap{
-    flex-basis: 80%;
-    display: flex;
-    padding: 30px 0;
-}
-
 .post{
     flex-basis: 70%;
-    margin: 10% 0;
+    margin: 100px 0;
 }
 .post h2{
     margin-bottom: 25px;
@@ -98,11 +214,11 @@ header{
 .post p{
     display: flex;
     align-items: center;
-    margin: 20px;
+    margin: 30px 10px;
 }
 .post label{
     display: block;
-    width: 80px;
+    flex: 0 1 80px;
     margin-right: 20px;
     text-align: right;
     font-size: 16px;
@@ -111,16 +227,40 @@ header{
     flex: 0 1 60%;
 }
 .post #submit{
-    margin: 30px 5% 0 0;
+    margin: 30px 10% 0 0;
     background-color: cornflowerblue;
-    width: 100px;
+    width: 120px;
     border: 0;
 }
 .login{
     flex-basis: 50%;
     margin: 10% 0;
 }
+.login p{
+    justify-content: center;
+}
 .login #submit{
     width: 150px;
     background-color: cornflowerblue;
+}
+.upload label{
+    flex: 0 0 100px;
+}
+@media (max-width:899px){
+    .post{
+        flex-basis: 65%;
+        margin: 80px 0;
+    }
+    .post p:not(.calign, .ralign){
+        display: block;
+    }
+    .post input:not(#submit){
+        width: 90%;
+    }
+    .post label{
+        display: block;
+        margin-bottom: 10px;
+        text-align: left;
+        font-size: 16px;
+    }
 }

@@ -3,11 +3,9 @@
     if(isset($_SESSION['userid']))
         header('Location: index.php');
 
-
-    require "../connectdb.php";
-    mysqli_select_db($db, 'fleamarket') or die(mysqli_error($db));
-
     if(isset($_POST['userid'])){
+        require "../connectdb.php";
+        mysqli_select_db($db, 'fleamarket') or die(mysqli_error($db));
 
         // WARNING : SQL injection weak - need escape
         $userid = $_POST['userid'];
