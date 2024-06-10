@@ -37,7 +37,9 @@ select, input, textarea{
 .btn {
     display: block;
     text-align: center;
+    align-self: flex-start;
     width: 90px;
+    height: 16px;
     padding: 10px 0;
     margin: 0 4px;
     border-radius: 3px;
@@ -205,8 +207,8 @@ footer{
     font-weight: bold;
 }
 .post{
-    flex-basis: 70%;
-    margin: 100px 0;
+    flex-basis: 65%;
+    margin: 80px 0;
 }
 .post h2{
     margin-bottom: 25px;
@@ -214,7 +216,7 @@ footer{
 .post p{
     display: flex;
     align-items: center;
-    margin: 30px 10px;
+    margin: 30px;
 }
 .post label{
     display: block;
@@ -223,13 +225,14 @@ footer{
     text-align: right;
     font-size: 16px;
 }
-.post input:not(#submit){
+.post input:not(#submit,#passactivate){
     flex: 0 1 60%;
 }
 .post #submit{
     margin: 30px 10% 0 0;
     background-color: cornflowerblue;
     width: 120px;
+    height: 40px;
     border: 0;
 }
 .login{
@@ -246,13 +249,17 @@ footer{
 .upload label{
     flex: 0 0 100px;
 }
+#newpass{
+    display: flex;
+}
+#passactivate{
+    flex: 0 1;
+    margin: 0 5px;
+}
 @media (max-width:899px){
-    .post{
-        flex-basis: 65%;
-        margin: 80px 0;
-    }
     .post p:not(.calign, .ralign){
         display: block;
+        margin: 30px 10px;
     }
     .post input:not(#submit){
         width: 90%;

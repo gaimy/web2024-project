@@ -24,6 +24,7 @@
             header('Location: ?id='.$_GET['id']);
         }
         if(isset($_GET['remove']) && $_SESSION['userid'] === $article['uploader']){
+            if(!unlink($article['thumbnail'])) die('Error deleting file');
             $query = "delete from articles where articleID=".$_GET['id'];
             mysqli_query($db, $query) or die(mysqli_error($db));
             header('Location: index.php');
