@@ -43,7 +43,7 @@
         <?php require "module/header.php";?>
     </header>
     <div class="main-wrap">
-        <section class="upload post">
+        <section class="post">
         <h2>Upload</h2>
             <form action="" method="post" enctype="multipart/form-data">
             <p>

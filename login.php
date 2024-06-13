@@ -8,23 +8,23 @@
 
     // WARNING : SQL injection weak - need escape
     if(isset($_POST['userid'])){
-    $userid = $_POST['userid'];
-    $userpass = $_POST['userpass'];
+        $userid = $_POST['userid'];
+        $userpass = $_POST['userpass'];
 
-    $query = "select * from users where userid='$userid'";
-    $result = mysqli_query($db, $query) or die(mysqli_error($db));
-    $result = mysqli_fetch_assoc($result);
+        $query = "select * from users where userid='$userid'";
+        $result = mysqli_query($db, $query) or die(mysqli_error($db));
+        $result = mysqli_fetch_assoc($result);
 
-    if(isset($result['userID'])){
-        $auth = password_verify($userpass,$result['userPasshash']);
-    }else{
-        $auth = 0; // no id;
-    }
-    if($auth){
-        $_SESSION['userid'] = $result['userID'];
-        $_SESSION['username'] = $result['userName'];
-        header('Location: index.php');
-    }
+        if(isset($result['userID'])){
+            $auth = password_verify($userpass, $result['userPasshash']);
+        }else{
+            $auth = 0; // no id;
+        }
+        if($auth){
+            $_SESSION['userid'] = $result['userID'];
+            $_SESSION['username'] = $result['userName'];
+            header('Location: index.php');
+        }
     }
 ?>
 <!DOCTYPE html>

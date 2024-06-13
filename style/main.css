@@ -1,7 +1,6 @@
 *{
     padding: 0;
     margin: 0;
-    list-style: none;
 }
 .ralign{justify-content: right;}
 .calign{justify-content: center;}
@@ -28,7 +27,7 @@ select, input, textarea{
     font-size: 20px;
 }
 .profile{
-    font-size: 20px;
+    font-size: 18px;
     padding: 7px;
 }
 .profile a{
@@ -76,7 +75,14 @@ header{
     margin-right: 10px;
 }
 .search input{
-    flex: 0 1 80%;
+    flex: 1 1 auto;
+}
+.search #submit{
+    flex: 0 0 auto;
+    padding: 0;
+    margin-left: 10px;
+    height: 30px;
+    border-bottom: solid blue 1px;
 }
 
 /* index page */
@@ -92,7 +98,8 @@ header{
     padding: 15px;
     margin: 5px;
     background-color: white;
-    border-radius: 5%;
+    border-radius: 10px;
+    border-bottom: 1px solid blue;
 }
 .item-imgwrap{
     display: flex;
@@ -123,6 +130,7 @@ header{
 .item-author, .item-date{
     font-family: monospace;
     font-weight: bold;
+    font-size: smaller;
     text-align: right;
     margin-right: 10px;
 }
@@ -130,7 +138,7 @@ header{
     content: "Uploaded by ";
     font-weight: normal;
 }
-@media (max-width:899px){
+@media (max-width:700px){
     .articles-wrap{
         flex-basis: 90%;
         display: flex;
@@ -138,11 +146,9 @@ header{
         padding: 15px 0;
     }
     .item-wrap{
-        flex: 0 1 120px;
+        flex: 0 1 100px;
         padding: 15px;
         margin: 5px;
-        background-color: white;
-        border-radius: 5%;
     }
     .item-link{
         display: block flex;
@@ -151,8 +157,8 @@ header{
     }
     .item-wrap img{
         object-fit: cover;
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
     }
     .item-content{
         margin: 0 20px;
@@ -169,6 +175,8 @@ header{
     flex: 0 0 70%;
     padding: 20px;
     background-color: white;
+    border-radius: 10px;
+    border-bottom: 1px solid blue;
 }
 .articleview .item-imgwrap img{
     max-width: 100%;
@@ -216,11 +224,11 @@ footer{
 .post p{
     display: flex;
     align-items: center;
-    margin: 30px;
+    margin: 30px 20px;
 }
 .post label{
     display: block;
-    flex: 0 1 80px;
+    flex: 0 1 100px;
     margin-right: 20px;
     text-align: right;
     font-size: 16px;
@@ -239,15 +247,12 @@ footer{
     flex-basis: 50%;
     margin: 10% 0;
 }
-.login p{
-    justify-content: center;
+.login label{
+    flex: 0 1 80px;
 }
 .login #submit{
     width: 150px;
     background-color: cornflowerblue;
-}
-.upload label{
-    flex: 0 0 100px;
 }
 #newpass{
     display: flex;
@@ -256,7 +261,10 @@ footer{
     flex: 0 1;
     margin: 0 5px;
 }
-@media (max-width:899px){
+@media (max-width:700px){
+    .post{
+        flex-basis: 80%;
+    }
     .post p:not(.calign, .ralign){
         display: block;
         margin: 30px 10px;

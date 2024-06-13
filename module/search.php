@@ -22,5 +22,6 @@
         </select>
         <input type="search" name="keyword" id="squery"
         value=<?php echo $_GET['keyword']; ?>>
+        <input type="image" src="search-icon.jpg" id="submit" onsubmit="return false;">
     </form>
 </div>

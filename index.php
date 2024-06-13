@@ -36,12 +36,13 @@
             else if($_GET['category'] !== "all")
                 $query .= "and category ='". $_GET['category']."'";
 
+            $query .= "order by uploadDate desc";
             $result = mysqli_query($db, $query) or die(mysqli_error($db));
             if(mysqli_num_rows($result) == 0) echo "<p> There is no articles </p>";
             else{
             while($row = mysqli_fetch_assoc($result)){
-                if(strlen($row['content']) >= 40){
-                    $row['content'] = substr($row['content'],0,100)."...";
+                if(strlen($row['content']) >= 50){
+                    $row['content'] = substr($row['content'],0,50)."...";
                 }
                 $itemwrap = '<article class="item-wrap" >';
                 $itemwrap .= '<a class="item-link" href="view.php?id='.$row['articleID'];
